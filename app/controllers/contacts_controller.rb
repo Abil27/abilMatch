@@ -1,11 +1,17 @@
 class ContactsController < ApplicationController
+
+  # Get request to /contact-us
+  # Show new contact form
   def new
     @contact = Contact.new
   end
 
+  # POST request / contacts
   def create
+    # Mass assignment of form fiedl to contact object
     @contact = Contact.new(contact_params)
     if @contact.save
+      # store form field via parameters into variables
       name = params[:contact][:name]
       email = params[:contact][:email]
       body = params[:contact][:comments]
